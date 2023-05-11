@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
-    "types": ["node"],
+    "types": [
+      "node",
+      "jest",
+      "@testing-library/jest-dom",
+      "@types/jest",
+      "@types/testing-library__jest-dom"
+    ],
+    "typeRoots": ["./node_modules/@types"],
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
