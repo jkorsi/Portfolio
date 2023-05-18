@@ -8,7 +8,6 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {/* <TopNav /> */}
         <ResponsiveNav />
         <main className="mt-24 mb-24 mx-5 p-10">{RoutedContent}</main>
         <footer className="mt-96 mb-0">Alateksti xx</footer>
