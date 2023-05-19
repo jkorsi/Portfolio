@@ -1,14 +1,12 @@
-import { useState } from "react";
-
 export function DynamicTable(headings: string[], content: string[]) {
   return (
     <>
-      <table>
+      <table className="table-auto border-collapse border-2 border-slate-400 bg-neutral-100 bg-opacity-70">
         <thead>
           <tr>
             {headings?.map((heading) => {
               return (
-                <th className="px-2" key={heading}>
+                <th className="border-2 border-slate-400" key={heading}>
                   {heading}
                 </th>
               );
@@ -18,10 +16,13 @@ export function DynamicTable(headings: string[], content: string[]) {
         <tbody>
           {content?.map((row, index: number) => {
             return (
-              <tr key={index}>
+              <tr className="border-2 border-slate-400" key={index}>
                 {headings?.map((key) => {
                   return (
-                    <td key={row[key as keyof typeof row].toString()}>
+                    <td
+                      className="border-2 border-slate-400"
+                      key={row[key as keyof typeof row].toString()}
+                    >
                       {row[key as keyof typeof row].toString()}
                     </td>
                   );
