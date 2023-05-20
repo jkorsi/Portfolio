@@ -12,6 +12,7 @@ export const Stations = () => {
       const jsonResponse = await data.json();
 
       setStations(jsonResponse);
+
       setHeadings(Object.keys(jsonResponse[0]));
     };
 
@@ -19,8 +20,9 @@ export const Stations = () => {
   }, []);
 
   if (!headings || !stations) {
-    return <div className="h-96"></div>;
+    //TODO: Could try to prevent conent shift
+    return <div></div>;
   }
 
-  return DynamicTable(headings, stations);
+  return <DynamicTable headings={headings} content={stations} />;
 };

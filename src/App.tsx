@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <ResponsiveNav />
         <main className="mt-24 mb-24 mx-5 p-10">{RoutedContent}</main>
-        <footer className="mt-96 mb-0">Alateksti xx</footer>
+        <footer className="mt-12 mb-12">Footer Comes Here</footer>
       </BrowserRouter>
     </>
   );
