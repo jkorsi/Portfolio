@@ -1,8 +1,10 @@
 /**
  * @jest-environment jsdom
+ * @jest-setup jest-setup.ts
  */
 
-import { expect, test } from "@jest/globals";
+//import { expect, test } from "@jest/globals";
+//import {expect} from '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 

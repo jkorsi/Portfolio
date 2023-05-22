@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { DynamicTable } from "./DynamicTable";
+import fetch from "cross-fetch";
 
 export const Stations = () => {
   const [stations, setStations] = useState<string[]>();
@@ -9,7 +10,7 @@ export const Stations = () => {
     const fetchData = async () => {
       const data = await fetch("http://localhost:8080/api/stations");
 
-      const jsonResponse = await data.json();
+      const jsonResponse = (await data.json()) as string[];
 
       setStations(jsonResponse);
 
@@ -20,9 +21,17 @@ export const Stations = () => {
   }, []);
 
   if (!headings || !stations) {
-    //TODO: Could try to prevent conent shift
+    //TODO: Could try to prevent content shift
     return <div></div>;
   }
 
-  return <DynamicTable headings={headings} content={stations} />;
+  console.log(stations);
+
+  return (
+    <DynamicTable
+      headings={headings}
+      content={stations}
+      columnFilter={["fid", "stationLocationX", "stationLocationY"]}
+    />
+  );
 };
