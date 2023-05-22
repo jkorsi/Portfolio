@@ -64,7 +64,7 @@ const parsedMockData = mockData.map((data) => JSON.parse(data));
 test("renders dynamic table with correct headings and content", () => {
   render(
     <DynamicTable
-      headings={Object.keys(JSON.parse(mockData[0]))}
+      columns={Object.keys(JSON.parse(mockData[0]))}
       content={parsedMockData}
       columnFilter={["fid", "stationLocationX", "stationLocationY"]}
     />

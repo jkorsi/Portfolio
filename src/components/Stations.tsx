@@ -29,7 +29,7 @@ export const Stations = () => {
 
   return (
     <DynamicTable
-      headings={headings}
+      columns={headings}
       content={stations}
       columnFilter={["fid", "stationLocationX", "stationLocationY"]}
     />
