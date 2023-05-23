@@ -15,3 +15,24 @@ export function CamelCaseToNormal(key: string): string {
 
   return numbersSeparated;
 }
+
+export function NormalToCamelCase(str: string): string {
+  // Remove any leading or trailing spaces
+  const trimmedStr = str.trim();
+
+  // Split the string by spaces or special characters
+  const words = trimmedStr.split(/[^\w]+/);
+
+  // Convert the words to camel case
+  const camelCased = words
+    .map((word, index) => {
+      if (index === 0) {
+        return word.toLowerCase();
+      } else {
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      }
+    })
+    .join("");
+
+  return camelCased;
+}

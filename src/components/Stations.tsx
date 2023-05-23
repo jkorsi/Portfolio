@@ -25,8 +25,6 @@ export const Stations = () => {
     return <div></div>;
   }
 
-  console.log(stations);
-
   return (
     <DynamicTable
       columns={headings}
