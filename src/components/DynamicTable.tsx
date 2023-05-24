@@ -1,22 +1,46 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 
-import { SortContentsByType } from "../tools/SortContentsByType";
+import { LocalSortContentsByType } from "../tools/LocalSortContentsByType";
 import { ColumnMap, ContentMap } from "./TableDataMapping";
+import fetch from "cross-fetch";
 
-interface DynamicTableProps<T> {
-  columns: string[];
-  content: T[];
+interface DynamicTableProps {
+  fetchUrl: string;
   columnFilter?: string[];
 }
 
-export function DynamicTable<T>(props: DynamicTableProps<T>) {
-  const { content, columns, columnFilter } = props;
+export function DynamicTable(props: DynamicTableProps) {
+  const { fetchUrl, columnFilter } = props;
 
   const [sortColumn, setSortColumn] = useState<string>("id");
   const [sortDirection, setSortDirection] = useState<string>("asc");
 
+  const [content, setContent] = useState<string[]>();
+  const [columns, setColumns] = useState<string[]>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch(fetchUrl);
+
+      const jsonResponse = (await data.json()) as string[];
+      console.log("Data: " + JSON.stringify(jsonResponse));
+      console.log("keys: " + Object.keys(jsonResponse[0]));
+
+      setContent(jsonResponse);
+
+      setColumns(Object.keys(jsonResponse[0]));
+      console.log("cols: " + columns);
+    };
+
+    fetchData();
+  }, [fetchUrl]);
+
+  useEffect(() => {
+    console.log("Columns: " + columns);
+  }, [columns]);
+
   const filteredColumns = useMemo(
-    () => columns.filter((item) => !columnFilter?.includes(item)),
+    () => columns?.filter((item) => !columnFilter?.includes(item)) || [],
     [columns, columnFilter]
   );
 
@@ -30,12 +54,23 @@ export function DynamicTable<T>(props: DynamicTableProps<T>) {
   };
 
   const sortedContent = useMemo(() => {
-    const sortedData = [...content];
+    //Content is sorted when there's change to content/sortColumn/sortDirection
+    let sortedData: string[] = [""];
 
-    SortContentsByType<T>(sortedData, sortColumn, sortDirection);
+    if (content) {
+      sortedData = [...content];
+      LocalSortContentsByType(sortedData, sortColumn, sortDirection);
+    }
+    console.log("Sorted data:" + sortedData);
 
     return sortedData;
   }, [content, sortColumn, sortDirection]);
+
+  if (!columns || !content) {
+    console.log("Nothing to show");
+    //TODO: Could try to prevent content shift
+    return <div></div>;
+  }
 
   return (
     <div className="overflow-x-auto border-2 shadow-md sm:rounded-xl">

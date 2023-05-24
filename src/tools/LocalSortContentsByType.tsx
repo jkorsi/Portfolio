@@ -1,4 +1,8 @@
-export function SortContentsByType<T>(
+/*
+Use this for sorting small datasets locally
+*/
+
+export function LocalSortContentsByType<T>(
   sortedData: T[],
   sortColumn: string,
   sortDirection: string
