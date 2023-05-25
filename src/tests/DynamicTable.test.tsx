@@ -1,15 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { DynamicTable } from "../components/DynamicTable";
 
-// Mock your hooks here if necessary
-// jest.mock("../components/hooks/useSortData.ts", () => ({
-//   useSortData: () => ({
-//     sortColumn: "defaultColumn",
-//     sortDirection: "asc",
-//     handleSort: jest.fn(),
-//   }),
-// }));
-
 describe("DynamicTable component", () => {
   const mockProps = {
     content: [
@@ -26,6 +17,7 @@ describe("DynamicTable component", () => {
     handleItemsPerPageChange: jest.fn(),
     totalPages: 1,
     handleSortChange: jest.fn(),
+    handleSearchKeywordChange: jest.fn(),
   };
 
   it("renders correctly with non-empty content", () => {
@@ -38,7 +30,7 @@ describe("DynamicTable component", () => {
   it("renders correctly with empty content", () => {
     render(<DynamicTable {...mockProps} content={[]} />);
 
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
+    expect(screen.getByText("No Data Found")).toBeInTheDocument();
   });
 
   it("properly handles sorting", () => {

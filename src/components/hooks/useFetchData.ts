@@ -24,12 +24,14 @@ const useFetchData = ({
   const [sortColumn, setSortColumn] = useState<string>(initialOrderBy);
   const [sortDirection, setSortDirection] = useState<string>(initialOrderDir);
   const [content, setContent] = useState<string[]>([]);
+  const [searchKeyword, setSearchKeyword] = useState<string>("");
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("Fetch use-effect");
     fetchData();
-  }, [currentPage, itemsPerPage, sortColumn, sortDirection]);
+  }, [currentPage, itemsPerPage, sortColumn, sortDirection, searchKeyword]);
 
   useEffect(() => {
     navigate(
@@ -38,12 +40,20 @@ const useFetchData = ({
   }, [currentPage, itemsPerPage, sortColumn, sortDirection, navigate]);
 
   const generateFetchUrl = (): string => {
-    const fetchUrl = `${apiUrl}/?orderBy=${sortColumn}&orderDir=${sortDirection}&page=${currentPage}&size=${itemsPerPage}`;
+    let fetchUrl = `${apiUrl}/?orderBy=${sortColumn}&orderDir=${sortDirection}&page=${currentPage}&size=${itemsPerPage}`;
+    console.log("f:" + fetchUrl);
+
+    if (searchKeyword) {
+      fetchUrl = `${apiUrl}/search?keyword=${searchKeyword}&orderBy=${sortColumn}&orderDir=${sortDirection}&page=${currentPage}&size=${itemsPerPage}`;
+      console.log("search: " + fetchUrl);
+    }
+
     return fetchUrl;
   };
 
   const fetchData = async () => {
     const fetchUrl = generateFetchUrl();
+    console.log("Generated fetchUrl:");
     try {
       const data = await fetch(fetchUrl);
       const jsonResponse = await data.json();
@@ -55,6 +65,10 @@ const useFetchData = ({
     } catch (error) {
       console.error("Fetch failed:", error);
     }
+  };
+
+  const handleSearchKeywordChange = (keyword: string) => {
+    setSearchKeyword(keyword);
   };
 
   const handlePageChange = (page: number) => {
@@ -79,6 +93,7 @@ const useFetchData = ({
     handlePageChange,
     handleItemsPerPageChange,
     handleSortChange,
+    handleSearchKeywordChange,
   };
 };
 

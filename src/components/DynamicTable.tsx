@@ -1,8 +1,9 @@
 import { useMemo, useState, useEffect } from "react";
 import { LocalSortContentsByType } from "../tools/LocalSortContentsByType";
-import { ColumnMap, ContentMap } from "./TableDataMapping";
+import { TableDataMap } from "./TableDataMapping";
 import PaginationFooter from "./PaginationFooter";
 import useSortData from "./hooks/useSortData";
+import SearchInput from "./TableSearchInput";
 
 interface DynamicTableProps {
   content: any[];
@@ -14,6 +15,7 @@ interface DynamicTableProps {
   handleItemsPerPageChange: (value: number) => void;
   totalPages: number;
   handleSortChange: (column: string, direction: string) => void;
+  handleSearchKeywordChange: (keyword: string) => void;
 }
 
 export function DynamicTable(props: DynamicTableProps) {
@@ -27,11 +29,13 @@ export function DynamicTable(props: DynamicTableProps) {
     handleItemsPerPageChange,
     totalPages,
     handleSortChange,
+    handleSearchKeywordChange,
   } = props;
 
   const { sortColumn, sortDirection, handleSort } = useSortData({
     defaultSortColumn,
   });
+
   const [columns, setColumns] = useState<string[]>([]);
 
   useEffect(() => {
@@ -51,21 +55,17 @@ export function DynamicTable(props: DynamicTableProps) {
     [columns, columnFilter]
   );
 
-  if (!columns || content.length === 0) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="overflow-x-auto border-2 shadow-md sm:rounded-xl">
-      <table className="text-left table-auto whitespace-nowrap bg-neutral-100 bg-opacity-70">
-        <ColumnMap
-          formattedColumns={filteredColumns}
-          handleSort={handleSort}
-          sortColumn={sortColumn}
-          sortDirection={sortDirection}
-        />
-        <ContentMap content={content} columns={filteredColumns} />
-      </table>
+      <SearchInput handleSearchKeywordChange={handleSearchKeywordChange} />
+      <TableDataMap
+        formattedColumns={filteredColumns}
+        handleSort={handleSort}
+        sortColumn={sortColumn}
+        sortDirection={sortDirection}
+        content={content}
+        columns={filteredColumns}
+      />
       <PaginationFooter
         currentPage={currentPage}
         totalPages={totalPages}

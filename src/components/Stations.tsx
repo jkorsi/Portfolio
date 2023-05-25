@@ -1,5 +1,6 @@
 import useFetchData from "./hooks/useFetchData";
 import { DynamicTable } from "./DynamicTable";
+
 export const Stations = () => {
   const {
     content,
@@ -9,6 +10,7 @@ export const Stations = () => {
     handlePageChange,
     handleItemsPerPageChange,
     handleSortChange,
+    handleSearchKeywordChange,
   } = useFetchData({
     initialPage: 0,
     initialPageSize: 3,
@@ -28,6 +30,7 @@ export const Stations = () => {
       handleItemsPerPageChange={handleItemsPerPageChange}
       totalPages={totalPages}
       handleSortChange={handleSortChange}
+      handleSearchKeywordChange={handleSearchKeywordChange}
     />
   );
 };
