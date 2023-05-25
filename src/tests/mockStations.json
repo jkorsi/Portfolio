@@ -1,52 +1,59 @@
-[
-  {
-    "fid": 1,
-    "id": 501,
-    "stationName": "Hanasaari",
-    "stationAddress": "Hanasaarenranta 1",
-    "stationCity": "Espoo",
-    "stationCapacity": 10,
-    "stationLocationX": 24.840319,
-    "stationLocationY": 60.16582
+{
+  "content": [
+    {
+      "fid": 1,
+      "id": 501,
+      "stationName": "Hanasaari",
+      "stationAddress": "Hanasaarenranta 1",
+      "stationCity": "Espoo",
+      "stationCapacity": 10,
+      "stationLocationX": 24.840319,
+      "stationLocationY": 60.16582
+    },
+    {
+      "fid": 457,
+      "id": 405,
+      "stationName": "Jollas",
+      "stationAddress": "Jollaksentie 33",
+      "stationCity": " ",
+      "stationCapacity": 16,
+      "stationLocationX": 25.061668,
+      "stationLocationY": 60.164406
+    },
+    {
+      "fid": 2,
+      "id": 503,
+      "stationName": "Keilalahti",
+      "stationAddress": "Keilalahdentie 2",
+      "stationCity": "Espoo",
+      "stationCapacity": 28,
+      "stationLocationX": 24.827467,
+      "stationLocationY": 60.171524
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "empty": false,
+      "unsorted": false,
+      "sorted": true
+    },
+    "offset": 0,
+    "pageSize": 3,
+    "pageNumber": 0,
+    "paged": true,
+    "unpaged": false
   },
-  {
-    "fid": 2,
-    "id": 503,
-    "stationName": "Keilalahti",
-    "stationAddress": "Keilalahdentie 2",
-    "stationCity": "Espoo",
-    "stationCapacity": 28,
-    "stationLocationX": 24.827467,
-    "stationLocationY": 60.171524
+  "last": false,
+  "totalPages": 2,
+  "totalElements": 5,
+  "size": 3,
+  "number": 0,
+  "sort": {
+    "empty": false,
+    "unsorted": false,
+    "sorted": true
   },
-  {
-    "fid": 3,
-    "id": 505,
-    "stationName": "Westendinasema",
-    "stationAddress": "Westendintie 1",
-    "stationCity": "Espoo",
-    "stationCapacity": 16,
-    "stationLocationX": 24.805758,
-    "stationLocationY": 60.168266
-  },
-  {
-    "fid": 456,
-    "id": 404,
-    "stationName": "Sompasaari",
-    "stationAddress": "Sompasaarenlaituri 2",
-    "stationCity": " ",
-    "stationCapacity": 14,
-    "stationLocationX": 24.976076,
-    "stationLocationY": 60.18293
-  },
-  {
-    "fid": 457,
-    "id": 405,
-    "stationName": "Jollas",
-    "stationAddress": "Jollaksentie 33",
-    "stationCity": " ",
-    "stationCapacity": 16,
-    "stationLocationX": 25.061668,
-    "stationLocationY": 60.164406
-  }
-]
+  "first": true,
+  "numberOfElements": 3,
+  "empty": false
+}

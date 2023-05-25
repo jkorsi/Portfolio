@@ -1,12 +1,33 @@
+import useFetchData from "./hooks/useFetchData";
 import { DynamicTable } from "./DynamicTable";
-
 export const Stations = () => {
-  const fetchUrl = "http://localhost:8080/api/stations";
+  const {
+    content,
+    totalPages,
+    currentPage,
+    itemsPerPage,
+    handlePageChange,
+    handleItemsPerPageChange,
+    handleSortChange,
+  } = useFetchData({
+    initialPage: 0,
+    initialPageSize: 3,
+    initialOrderBy: "stationName",
+    initialOrderDir: "asc",
+    apiUrl: "http://localhost:8080/api/stations",
+  });
 
   return (
     <DynamicTable
-      fetchUrl={fetchUrl}
+      content={content}
       columnFilter={["fid", "stationLocationX", "stationLocationY"]}
+      defaultSortColumn={"stationName"}
+      currentPage={currentPage}
+      itemsPerPage={itemsPerPage}
+      handlePageChange={handlePageChange}
+      handleItemsPerPageChange={handleItemsPerPageChange}
+      totalPages={totalPages}
+      handleSortChange={handleSortChange}
     />
   );
 };

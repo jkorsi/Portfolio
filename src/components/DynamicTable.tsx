@@ -1,75 +1,58 @@
 import { useMemo, useState, useEffect } from "react";
-
 import { LocalSortContentsByType } from "../tools/LocalSortContentsByType";
 import { ColumnMap, ContentMap } from "./TableDataMapping";
-import fetch from "cross-fetch";
+import PaginationFooter from "./PaginationFooter";
+import useSortData from "./hooks/useSortData";
 
 interface DynamicTableProps {
-  fetchUrl: string;
+  content: any[];
   columnFilter?: string[];
+  defaultSortColumn: string;
+  currentPage: number;
+  itemsPerPage: number;
+  handlePageChange: (page: number) => void;
+  handleItemsPerPageChange: (value: number) => void;
+  totalPages: number;
+  handleSortChange: (column: string, direction: string) => void;
 }
 
 export function DynamicTable(props: DynamicTableProps) {
-  const { fetchUrl, columnFilter } = props;
+  const {
+    content,
+    columnFilter,
+    defaultSortColumn,
+    currentPage,
+    itemsPerPage,
+    handlePageChange,
+    handleItemsPerPageChange,
+    totalPages,
+    handleSortChange,
+  } = props;
 
-  const [sortColumn, setSortColumn] = useState<string>("id");
-  const [sortDirection, setSortDirection] = useState<string>("asc");
-
-  const [content, setContent] = useState<string[]>();
-  const [columns, setColumns] = useState<string[]>();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetch(fetchUrl);
-
-      const jsonResponse = (await data.json()) as string[];
-      console.log("Data: " + JSON.stringify(jsonResponse));
-      console.log("keys: " + Object.keys(jsonResponse[0]));
-
-      setContent(jsonResponse);
-
-      setColumns(Object.keys(jsonResponse[0]));
-      console.log("cols: " + columns);
-    };
-
-    fetchData();
-  }, [fetchUrl]);
+  const { sortColumn, sortDirection, handleSort } = useSortData({
+    defaultSortColumn,
+  });
+  const [columns, setColumns] = useState<string[]>([]);
 
   useEffect(() => {
-    console.log("Columns: " + columns);
-  }, [columns]);
+    if (content && content.length > 0) {
+      let sortedData = [...content];
+      LocalSortContentsByType(sortedData, sortColumn, sortDirection);
+      setColumns(Object.keys(content[0]));
+    }
+  }, [sortColumn, sortDirection, content]);
+
+  useEffect(() => {
+    handleSortChange(sortColumn, sortDirection);
+  }, [sortColumn, sortDirection, handleSortChange]);
 
   const filteredColumns = useMemo(
     () => columns?.filter((item) => !columnFilter?.includes(item)) || [],
     [columns, columnFilter]
   );
 
-  const handleSort = (column: string) => {
-    if (column === sortColumn) {
-      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
-    } else {
-      setSortColumn(column);
-      setSortDirection("asc");
-    }
-  };
-
-  const sortedContent = useMemo(() => {
-    //Content is sorted when there's change to content/sortColumn/sortDirection
-    let sortedData: string[] = [""];
-
-    if (content) {
-      sortedData = [...content];
-      LocalSortContentsByType(sortedData, sortColumn, sortDirection);
-    }
-    console.log("Sorted data:" + sortedData);
-
-    return sortedData;
-  }, [content, sortColumn, sortDirection]);
-
-  if (!columns || !content) {
-    console.log("Nothing to show");
-    //TODO: Could try to prevent content shift
-    return <div></div>;
+  if (!columns || content.length === 0) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -81,8 +64,15 @@ export function DynamicTable(props: DynamicTableProps) {
           sortColumn={sortColumn}
           sortDirection={sortDirection}
         />
-        <ContentMap content={sortedContent} columns={filteredColumns} />
+        <ContentMap content={content} columns={filteredColumns} />
       </table>
+      <PaginationFooter
+        currentPage={currentPage}
+        totalPages={totalPages}
+        handlePageChange={handlePageChange}
+        itemsPerPage={itemsPerPage}
+        handleItemsPerPageChange={handleItemsPerPageChange}
+      />
     </div>
   );
 }

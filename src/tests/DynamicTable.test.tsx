@@ -1,48 +1,53 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import { rest } from "msw";
-import { setupServer } from "msw/node";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { DynamicTable } from "../components/DynamicTable";
-import mockStations from "./mockStations.json";
 
-const server = setupServer(
-  rest.get("http://localhost/api/stations", (_req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(mockStations));
-  })
-);
+// Mock your hooks here if necessary
+// jest.mock("../components/hooks/useSortData.ts", () => ({
+//   useSortData: () => ({
+//     sortColumn: "defaultColumn",
+//     sortDirection: "asc",
+//     handleSort: jest.fn(),
+//   }),
+// }));
 
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+describe("DynamicTable component", () => {
+  const mockProps = {
+    content: [
+      {
+        column1: "value1",
+        column2: "value2",
+      },
+    ],
+    columnFilter: [],
+    defaultSortColumn: "column1",
+    currentPage: 1,
+    itemsPerPage: 1,
+    handlePageChange: jest.fn(),
+    handleItemsPerPageChange: jest.fn(),
+    totalPages: 1,
+    handleSortChange: jest.fn(),
+  };
 
-test("renders dynamic table with correct headings and content", async () => {
-  render(
-    <DynamicTable
-      fetchUrl="http://localhost/api/stations"
-      columnFilter={["fid", "stationLocationX", "stationLocationY"]}
-    />
-  );
+  it("renders correctly with non-empty content", () => {
+    render(<DynamicTable {...mockProps} />);
 
-  // Wait for the data to be fetched and the table to render
-  await waitFor(() => {
-    const elements = screen.queryAllByText(/Keilalahti/i);
-
-    // Assert the rendered headings
-    expect(screen.getByText(/Id/i)).toBeInTheDocument();
-    expect(screen.getByText(/Station Name/i)).toBeInTheDocument();
-    expect(screen.getByText(/Station Address/i)).toBeInTheDocument();
-    expect(screen.getByText(/Station City/i)).toBeInTheDocument();
-    expect(screen.getByText(/Station Capacity/i)).toBeInTheDocument();
-
-    // Assert the rendered content
-    expect(screen.getByText(/Keilalahti/i)).toBeInTheDocument();
-    expect(screen.getByText(/Westendinasema/i)).toBeInTheDocument();
-    expect(screen.getByText(/Westendintie 1/i)).toBeInTheDocument();
-
-    // Filtered stations should not be rendered
-    expect(screen.queryByText(/Station Location/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/Fid/i)).not.toBeInTheDocument();
-    return elements.length > 0;
+    expect(screen.getByText("value1")).toBeInTheDocument();
+    expect(screen.getByText("value2")).toBeInTheDocument();
   });
 
-  console.log(screen.debug);
+  it("renders correctly with empty content", () => {
+    render(<DynamicTable {...mockProps} content={[]} />);
+
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
+  });
+
+  it("properly handles sorting", () => {
+    render(<DynamicTable {...mockProps} />);
+
+    // Mock the click on a sortable column
+    fireEvent.click(screen.getByText("Column 1"));
+
+    // Check if sorting function was called
+    expect(mockProps.handleSortChange).toHaveBeenCalledWith("column1", "asc");
+  });
 });
