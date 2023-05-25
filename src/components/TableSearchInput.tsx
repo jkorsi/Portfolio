@@ -22,7 +22,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
     <div className="flex items-center px-4 py-2 mt-3 mb-3">
       <div className="mr-3 font-bold">Search:</div>
       <input
-        className="p-1 rounded-lg"
+        className="p-1 rounded-lg border-2 border-slate-300"
         type="text"
         placeholder="Search..."
         onChange={handleInputChange}

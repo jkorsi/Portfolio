@@ -6,6 +6,7 @@ import useSortData from "./hooks/useSortData";
 import SearchInput from "./TableSearchInput";
 
 interface DynamicTableProps {
+  title: string;
   content: any[];
   columnFilter?: string[];
   defaultSortColumn: string;
@@ -20,6 +21,7 @@ interface DynamicTableProps {
 
 export function DynamicTable(props: DynamicTableProps) {
   const {
+    title,
     content,
     columnFilter,
     defaultSortColumn,
@@ -56,7 +58,10 @@ export function DynamicTable(props: DynamicTableProps) {
   );
 
   return (
-    <div className="overflow-x-auto border-2 shadow-md sm:rounded-xl">
+    <div className="overflow-x-auto border-2 shadow-md sm:rounded-xl bg-slate-200 bg-opacity-70">
+      <div>
+        <h2 className="text-xl pt-4">{title}</h2>
+      </div>
       <SearchInput handleSearchKeywordChange={handleSearchKeywordChange} />
       <TableDataMap
         formattedColumns={filteredColumns}

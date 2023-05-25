@@ -9,49 +9,65 @@ exports[`PaginationFooter renders correctly 1`] = `
       class="flex items-center space-x-2"
     >
       <button
-        class="px-2 py-1 rounded border hover:bg-gray-200"
+        class="p-0 rounded w-7 h-7"
       >
-        First
+        <img
+          alt="First Page"
+          class="px-2 py-1 rounded  hover:bg-gray-200 inline-block w-7 h-7"
+          src="[object Object]"
+        />
       </button>
       <button
-        class="px-2 py-1 rounded border hover:bg-gray-200"
+        class="p-0 rounded w-7 h-7"
       >
-        Previous
+        <img
+          alt="Previous Page"
+          class="px-2 py-1 rounded  hover:bg-gray-200 inline-block w-7 h-6"
+          src="[object Object]"
+        />
       </button>
       <button
-        class="px-2 py-1 rounded border hover:bg-gray-200"
+        class="px-2 py-1 rounded border  hover:bg-gray-200"
       >
         0
       </button>
       <button
-        class="px-2 py-1 rounded border hover:bg-gray-200"
+        class="px-2 py-1 rounded border  hover:bg-gray-200"
       >
         1
       </button>
       <button
-        class="px-2 py-1 rounded border bg-gray-200"
+        class="px-2 py-1 rounded border  bg-gray-200"
       >
         2
       </button>
       <button
-        class="px-2 py-1 rounded border hover:bg-gray-200"
+        class="px-2 py-1 rounded border  hover:bg-gray-200"
       >
         3
       </button>
       <button
-        class="px-2 py-1 rounded border hover:bg-gray-200"
+        class="px-2 py-1 rounded border  hover:bg-gray-200"
       >
         4
       </button>
       <button
-        class="px-2 py-1 rounded border hover:bg-gray-200"
+        class="p-0 rounded w-7 h-7"
       >
-        Next
+        <img
+          alt="Next Page"
+          class="px-2 py-1 rounded hover:bg-gray-200 inline-block w-7 h-6"
+          src="[object Object]"
+        />
       </button>
       <button
-        class="px-2 py-1 rounded border hover:bg-gray-200"
+        class="p-0 rounded w-7 h-7"
       >
-        Last
+        <img
+          alt="Last Page"
+          class="px-2 py-1 rounded hover:bg-gray-200 inline-block w-7 h-7"
+          src="[object Object]"
+        />
       </button>
     </div>
     <div>

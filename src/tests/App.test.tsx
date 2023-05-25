@@ -25,7 +25,7 @@ test("full app rendering/navigating", async () => {
 
   // verify page content for expected route after navigating
   await user.click(screen.getByText("Bikes"));
-  expect(screen.getByText("Bike data site comes here")).toBeInTheDocument();
+  expect(screen.getByText("Bike Stations")).toBeInTheDocument();
 
   // verify page content for expected route after navigating
   await user.click(screen.getByText("Sandbox"));

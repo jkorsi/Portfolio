@@ -40,7 +40,7 @@ export function ColumnMap(props: {
   };
   return (
     <>
-      <thead>
+      <thead className="border-b-4">
         <tr>
           {formattedColumns?.map((column: string) => (
             <ColumnHeaderCell

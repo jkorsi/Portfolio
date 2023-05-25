@@ -19,10 +19,14 @@ export const Stations = () => {
     apiUrl: "http://localhost:8080/api/stations",
   });
 
+  const title = "Bike Stations";
+  const columnFilter = ["fid", "stationLocationX", "stationLocationY"];
+
   return (
     <DynamicTable
+      title={title}
       content={content}
-      columnFilter={["fid", "stationLocationX", "stationLocationY"]}
+      columnFilter={columnFilter}
       defaultSortColumn={"stationName"}
       currentPage={currentPage}
       itemsPerPage={itemsPerPage}

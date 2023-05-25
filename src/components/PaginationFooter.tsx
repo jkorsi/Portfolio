@@ -1,4 +1,8 @@
 import React from "react";
+import firstIcon from "../icons/pagination-icons/arrow-end-left-icon.svg";
+import lastIcon from "../icons/pagination-icons/arrow-end-right-icon.svg";
+import previousIcon from "../icons/pagination-icons/line-angle-left-icon.svg";
+import nextIcon from "../icons/pagination-icons/line-angle-right-icon.svg";
 
 interface PaginationProps {
   currentPage: number;
@@ -69,22 +73,24 @@ const PaginationFooter: React.FC<PaginationProps> = ({
   return (
     <div className="flex items-center justify-between px-4 py-2">
       <div className="flex items-center space-x-2">
-        <button
-          className="px-2 py-1 rounded border hover:bg-gray-200"
-          onClick={handleFirstPage}
-        >
-          First
+        <button className="p-0 rounded w-7 h-7" onClick={handleFirstPage}>
+          <img
+            src={firstIcon}
+            alt="First Page"
+            className="px-2 py-1 rounded  hover:bg-gray-200 inline-block w-7 h-7"
+          />
         </button>
-        <button
-          className="px-2 py-1 rounded border hover:bg-gray-200"
-          onClick={handlePreviousPage}
-        >
-          Previous
+        <button className="p-0 rounded w-7 h-7" onClick={handlePreviousPage}>
+          <img
+            src={previousIcon}
+            alt="Previous Page"
+            className="px-2 py-1 rounded  hover:bg-gray-200 inline-block w-7 h-6"
+          />
         </button>
         {generatePageNumbers().map((page) => (
           <button
             key={page}
-            className={`px-2 py-1 rounded border ${
+            className={`px-2 py-1 rounded border  ${
               currentPage === page ? "bg-gray-200" : "hover:bg-gray-200"
             }`}
             onClick={() => handlePageSelect(page)}
@@ -92,17 +98,19 @@ const PaginationFooter: React.FC<PaginationProps> = ({
             {page}
           </button>
         ))}
-        <button
-          className="px-2 py-1 rounded border hover:bg-gray-200"
-          onClick={handleNextPage}
-        >
-          Next
+        <button className="p-0 rounded w-7 h-7" onClick={handleNextPage}>
+          <img
+            src={nextIcon}
+            alt="Next Page"
+            className="px-2 py-1 rounded hover:bg-gray-200 inline-block w-7 h-6"
+          />
         </button>
-        <button
-          className="px-2 py-1 rounded border hover:bg-gray-200"
-          onClick={handleLastPage}
-        >
-          Last
+        <button onClick={handleLastPage} className="p-0 rounded w-7 h-7">
+          <img
+            src={lastIcon}
+            alt="Last Page"
+            className="px-2 py-1 rounded hover:bg-gray-200 inline-block w-7 h-7"
+          />
         </button>
       </div>
       <div>

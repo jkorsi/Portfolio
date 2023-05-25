@@ -19,29 +19,29 @@ describe("PaginationFooter", () => {
   });
 
   it("calls handlePageChange with the correct value when previous button is clicked", () => {
-    const { getByText } = render(<PaginationFooter {...mockProps} />);
-    const previousButton = getByText("Previous");
+    const { getByAltText } = render(<PaginationFooter {...mockProps} />);
+    const previousButton = getByAltText("Previous Page");
     fireEvent.click(previousButton);
     expect(mockHandlePageChange).toHaveBeenCalledWith(1);
   });
 
   it("calls handlePageChange with the correct value when next button is clicked", () => {
-    const { getByText } = render(<PaginationFooter {...mockProps} />);
-    const nextButton = getByText("Next");
+    const { getByAltText } = render(<PaginationFooter {...mockProps} />);
+    const nextButton = getByAltText("Next Page");
     fireEvent.click(nextButton);
     expect(mockHandlePageChange).toHaveBeenCalledWith(3);
   });
 
   it("calls handlePageChange with the correct value when first button is clicked", () => {
-    const { getByText } = render(<PaginationFooter {...mockProps} />);
-    const firstButton = getByText("First");
+    const { getByAltText } = render(<PaginationFooter {...mockProps} />);
+    const firstButton = getByAltText("First Page");
     fireEvent.click(firstButton);
     expect(mockHandlePageChange).toHaveBeenCalledWith(0);
   });
 
   it("calls handlePageChange with the correct value when last button is clicked", () => {
-    const { getByText } = render(<PaginationFooter {...mockProps} />);
-    const lastButton = getByText("Last");
+    const { getByAltText } = render(<PaginationFooter {...mockProps} />);
+    const lastButton = getByAltText("Last Page");
     fireEvent.click(lastButton);
     expect(mockHandlePageChange).toHaveBeenCalledWith(4);
   });

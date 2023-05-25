@@ -3,6 +3,7 @@ import { DynamicTable } from "../components/DynamicTable";
 
 describe("DynamicTable component", () => {
   const mockProps = {
+    title: "Test table",
     content: [
       {
         column1: "value1",
