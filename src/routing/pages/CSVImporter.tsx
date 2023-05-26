@@ -1,4 +1,4 @@
-import FileDropArea from "../../components/FileDropArea";
+import FileDropArea from "../../components/FileDropArea/FileDropArea";
 
 const CSVImporter = () => {
   const stationApiAddress = "http://localhost:8080/api/stations/upload";
@@ -39,6 +39,6 @@ function isValidStationCSV(data: string[][], headerRow: string[]): boolean {
     headerRow[9] === "Operaattor" &&
     headerRow[10] === "Kapasiteet" &&
     headerRow[11] === "x" &&
-    headerRow[12] === "y\r"
+    headerRow[12] === "y"
   );
 }

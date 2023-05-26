@@ -1,5 +1,5 @@
 import { useEffect, MutableRefObject } from "react";
-import { fileUploader } from "../tools/fileUploader";
+import { fileUploader } from "./fileUploader";
 
 type HandleFileUploadType = (
   file: File,
@@ -21,7 +21,8 @@ export const handleFileUpload: HandleFileUploadType = async (
     const headerRow = data[0];
 
     if (!validateCSV(data, headerRow)) {
-      alert("Invalid CSV file format!");
+      console.log(headerRow);
+      alert("Invalid CSV file format! Got header row: " + headerRow);
       setImportStatus("Invalid CSV file format!");
       return;
     }

@@ -1,5 +1,5 @@
 import { ChangeEvent, FC } from "react";
-import uploadIcon from "../icons/upload-icon.svg";
+import uploadIcon from "../../icons/upload-icon.svg";
 
 type FileUploadLabelProps = {
   handleFileInput: (event: ChangeEvent<HTMLInputElement>) => void;
