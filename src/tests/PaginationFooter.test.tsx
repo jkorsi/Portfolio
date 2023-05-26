@@ -56,7 +56,7 @@ describe("PaginationFooter", () => {
   it("calls handleItemsPerPageChange with the correct value when items per page is changed", () => {
     const { getByRole } = render(<PaginationFooter {...mockProps} />);
     const select = getByRole("combobox");
-    fireEvent.change(select, { target: { value: "3" } });
-    expect(mockHandleItemsPerPageChange).toHaveBeenCalledWith(3);
+    fireEvent.change(select, { target: { value: "5" } });
+    expect(mockHandleItemsPerPageChange).toHaveBeenCalledWith(5);
   });
 });

@@ -30,6 +30,6 @@ test("full app rendering/navigating", async () => {
   // verify page content for expected route after navigating
   await user.click(screen.getByText("Upload CSVs"));
   expect(
-    screen.getByText("Drop bike station or bike trip CSV files here")
+    screen.getByText("Drop / Select Station CSV here")
   ).toBeInTheDocument();
 });

@@ -78,9 +78,9 @@ exports[`PaginationFooter renders correctly 1`] = `
         class="px-2 py-1 ml-2 border rounded"
       >
         <option
-          value="3"
+          value="5"
         >
-          3
+          5
         </option>
         <option
           value="10"

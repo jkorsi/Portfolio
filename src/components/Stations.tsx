@@ -1,6 +1,7 @@
 import useFetchData from "./hooks/useFetchData";
 import { DynamicTable } from "./DynamicTable";
 
+//TODO: Refactor to make use of useContext to limit propertydrill
 export const Stations = () => {
   const {
     content,
@@ -13,7 +14,7 @@ export const Stations = () => {
     handleSearchKeywordChange,
   } = useFetchData({
     initialPage: 0,
-    initialPageSize: 3,
+    initialPageSize: 5,
     initialOrderBy: "stationName",
     initialOrderDir: "asc",
     apiUrl: "http://localhost:8080/api/stations",

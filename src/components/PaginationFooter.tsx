@@ -120,7 +120,7 @@ const PaginationFooter: React.FC<PaginationProps> = ({
           onChange={handleItemCalcsForEachPageChange}
           className="px-2 py-1 ml-2 border rounded"
         >
-          <option value={3}>3</option>
+          <option value={5}>5</option>
           <option value={10}>10</option>
           <option value={25}>25</option>
           <option value={50}>50</option>
