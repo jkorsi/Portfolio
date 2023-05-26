@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { DynamicTable } from "../components/DynamicTable";
+import { DynamicTable } from "../components/DynamicTable/DynamicTable";
 
 describe("DynamicTable component", () => {
   const mockProps = {

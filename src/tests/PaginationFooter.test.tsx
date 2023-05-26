@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/react";
-import PaginationFooter from "../components/PaginationFooter";
+import PaginationFooter from "../components/DynamicTable/PaginationFooter";
 
 describe("PaginationFooter", () => {
   const mockHandlePageChange = jest.fn();

@@ -1,7 +1,7 @@
-import { CamelCaseToNormal } from "../tools/CamelCaseToNormal";
-import bottomArrow from "../icons/arrow-bottom-icon.svg";
-import topArrow from "../icons/arrow-top-icon.svg";
-import sortArrow from "../icons/sort-result-icon.svg";
+import { CamelCaseToNormal } from "../../tools/CamelCaseToNormal";
+import bottomArrow from "../../icons/arrow-bottom-icon.svg";
+import topArrow from "../../icons/arrow-top-icon.svg";
+import sortArrow from "../../icons/sort-result-icon.svg";
 
 interface ColumnHeaderCellProps {
   column: string;

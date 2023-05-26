@@ -1,8 +1,8 @@
 import { useMemo, useState, useEffect } from "react";
-import { LocalSortContentsByType } from "../tools/LocalSortContentsByType";
+import { LocalSortContentsByType } from "../../tools/LocalSortContentsByType";
 import { TableDataMap } from "./TableDataMapping";
 import PaginationFooter from "./PaginationFooter";
-import useSortData from "./hooks/useSortData";
+import useSortData from "../hooks/useSortData";
 import SearchInput from "./TableSearchInput";
 
 interface DynamicTableProps {

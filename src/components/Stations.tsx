@@ -1,5 +1,5 @@
 import useFetchData from "./hooks/useFetchData";
-import { DynamicTable } from "./DynamicTable";
+import { DynamicTable } from "./DynamicTable/DynamicTable";
 
 //TODO: Refactor to make use of useContext to limit propertydrill
 export const Stations = () => {

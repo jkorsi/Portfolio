@@ -1,8 +1,8 @@
 import React from "react";
-import firstIcon from "../icons/pagination-icons/arrow-end-left-icon.svg";
-import lastIcon from "../icons/pagination-icons/arrow-end-right-icon.svg";
-import previousIcon from "../icons/pagination-icons/line-angle-left-icon.svg";
-import nextIcon from "../icons/pagination-icons/line-angle-right-icon.svg";
+import firstIcon from "../../icons/pagination-icons/arrow-end-left-icon.svg";
+import lastIcon from "../../icons/pagination-icons/arrow-end-right-icon.svg";
+import previousIcon from "../../icons/pagination-icons/line-angle-left-icon.svg";
+import nextIcon from "../../icons/pagination-icons/line-angle-right-icon.svg";
 
 interface PaginationProps {
   currentPage: number;
