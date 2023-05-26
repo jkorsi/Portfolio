@@ -1,6 +1,6 @@
 import { Stations } from "../../components/Stations";
 
-const Bikes = () => {
+const BikeStations = () => {
   return (
     <div>
       <div className="flex items-center justify-center">
@@ -10,4 +10,4 @@ const Bikes = () => {
   );
 };
 
-export default Bikes;
+export default BikeStations;

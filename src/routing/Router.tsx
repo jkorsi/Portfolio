@@ -1,15 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Bikes from "./pages/Bikes";
-import Sandbox from "./pages/Sandbox";
+import BikeTrips from "./pages/BikeTrips";
+import CSVImporter from "./pages/CSVImporter";
+import BikeStations from "./pages/BikesStations";
 
 export const RoutedContent = (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="about" element={<About />} />
-    <Route path="bikes" element={<Bikes />} />
-    <Route path="sandbox" element={<Sandbox />} />
+    <Route path="bikestations" element={<BikeStations />} />
+    <Route path="biketrips" element={<BikeTrips />} />
+    <Route path="upload" element={<CSVImporter />} />
   </Routes>
 );

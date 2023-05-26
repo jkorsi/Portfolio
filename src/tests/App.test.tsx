@@ -24,10 +24,12 @@ test("full app rendering/navigating", async () => {
   expect(screen.getByText(/Home Sweet Home/i)).toBeInTheDocument();
 
   // verify page content for expected route after navigating
-  await user.click(screen.getByText("Bikes"));
-  expect(screen.getByText("Bike Stations")).toBeInTheDocument();
+  await user.click(screen.getByText("Bike Stations"));
+  expect(screen.getByText("Search:")).toBeInTheDocument();
 
   // verify page content for expected route after navigating
-  await user.click(screen.getByText("Sandbox"));
-  expect(screen.getByText("Sandbox for testing stuff")).toBeInTheDocument();
+  await user.click(screen.getByText("Upload CSVs"));
+  expect(
+    screen.getByText("Drop bike station or bike trip CSV files here")
+  ).toBeInTheDocument();
 });

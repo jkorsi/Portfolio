@@ -53,9 +53,9 @@ const ResponsiveNav = () => {
                     dark:border-gray-700"
           >
             {<MenuItem menuLink="/" text="Home" />}
-            {<MenuItem menuLink="bikes" text="Bikes" />}
-            {<MenuItem menuLink="sandbox" text="Sandbox" />}
-            {<MenuItem menuLink="about" text="About" />}
+            {<MenuItem menuLink="bikestations" text="Bike Stations" />}
+            {<MenuItem menuLink="biketrips" text="Bike Trips" />}
+            {<MenuItem menuLink="upload" text="Upload CSVs" />}
           </ul>
         </div>
       </div>
