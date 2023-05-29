@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import BikeTrips from "./pages/BikeTrips";
 import CSVImporter from "./pages/CSVImporter";
-import BikeStations from "./pages/BikesStations";
+import BikeStations from "./pages/BikeStations";
 
 export const RoutedContent = (
   <Routes>

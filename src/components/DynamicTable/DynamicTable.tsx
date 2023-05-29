@@ -1,5 +1,4 @@
 import { useMemo, useState, useEffect } from "react";
-import { LocalSortContentsByType } from "../../tools/LocalSortContentsByType";
 import { TableDataMap } from "./TableDataMapping";
 import PaginationFooter from "./PaginationFooter";
 import useSortData from "../hooks/useSortData";
@@ -9,6 +8,7 @@ interface DynamicTableProps {
   title: string;
   content: any[];
   columnFilter?: string[];
+  columnOverride?: string[];
   defaultSortColumn: string;
   currentPage: number;
   itemsPerPage: number;
@@ -24,6 +24,7 @@ export function DynamicTable(props: DynamicTableProps) {
     title,
     content,
     columnFilter,
+    columnOverride,
     defaultSortColumn,
     currentPage,
     itemsPerPage,
@@ -42,8 +43,6 @@ export function DynamicTable(props: DynamicTableProps) {
 
   useEffect(() => {
     if (content && content.length > 0) {
-      let sortedData = [...content];
-      LocalSortContentsByType(sortedData, sortColumn, sortDirection);
       setColumns(Object.keys(content[0]));
     }
   }, [sortColumn, sortDirection, content]);
@@ -52,10 +51,17 @@ export function DynamicTable(props: DynamicTableProps) {
     handleSortChange(sortColumn, sortDirection);
   }, [sortColumn, sortDirection, handleSortChange]);
 
-  const filteredColumns = useMemo(
-    () => columns?.filter((item) => !columnFilter?.includes(item)) || [],
-    [columns, columnFilter]
-  );
+  let finalColumns: string[];
+  if (columns && columnFilter && !columnOverride) {
+    finalColumns = useMemo(
+      () => columns.filter((item) => !columnFilter.includes(item)) || [],
+      [columns, columnFilter]
+    );
+  } else if (columnOverride) {
+    finalColumns = columnOverride;
+  } else {
+    finalColumns = columns;
+  }
 
   return (
     <div className="overflow-x-auto border-2 shadow-md sm:rounded-xl bg-slate-200 bg-opacity-70">
@@ -64,12 +70,12 @@ export function DynamicTable(props: DynamicTableProps) {
       </div>
       <SearchInput handleSearchKeywordChange={handleSearchKeywordChange} />
       <TableDataMap
-        formattedColumns={filteredColumns}
+        formattedColumns={finalColumns}
         handleSort={handleSort}
         sortColumn={sortColumn}
         sortDirection={sortDirection}
         content={content}
-        columns={filteredColumns}
+        columns={finalColumns}
       />
       <PaginationFooter
         currentPage={currentPage}

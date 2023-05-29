@@ -8,6 +8,8 @@ interface UseFetchDataProps {
   initialPageSize: number;
   initialOrderBy: string;
   initialOrderDir: string;
+  minDate?: string;
+  maxDate?: string;
   apiUrl: string;
 }
 
@@ -16,6 +18,8 @@ const useFetchData = ({
   initialPageSize,
   initialOrderBy,
   initialOrderDir,
+  minDate,
+  maxDate,
   apiUrl,
 }: UseFetchDataProps) => {
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
@@ -29,7 +33,6 @@ const useFetchData = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Fetch use-effect");
     fetchData();
   }, [currentPage, itemsPerPage, sortColumn, sortDirection, searchKeyword]);
 
@@ -40,20 +43,22 @@ const useFetchData = ({
   }, [currentPage, itemsPerPage, sortColumn, sortDirection, navigate]);
 
   const generateFetchUrl = (): string => {
-    let fetchUrl = `${apiUrl}/?orderBy=${sortColumn}&orderDir=${sortDirection}&page=${currentPage}&size=${itemsPerPage}`;
-    console.log("f:" + fetchUrl);
+    let fetchUrl = `${apiUrl}/search?keyword=`;
 
-    if (searchKeyword) {
-      fetchUrl = `${apiUrl}/search?keyword=${searchKeyword}&orderBy=${sortColumn}&orderDir=${sortDirection}&page=${currentPage}&size=${itemsPerPage}`;
-      console.log("search: " + fetchUrl);
-    }
+    if (searchKeyword) fetchUrl = fetchUrl + searchKeyword;
+    if (sortColumn) fetchUrl = fetchUrl + `&orderBy=${sortColumn}`;
+    if (sortDirection) fetchUrl = fetchUrl + `&orderDir=${sortDirection}`;
+    if (currentPage) fetchUrl = fetchUrl + `&page=${currentPage}`;
+    if (itemsPerPage) fetchUrl = fetchUrl + `&size=${itemsPerPage}`;
+    if (minDate) fetchUrl = fetchUrl + `&minDate=${minDate}`;
+    if (maxDate) fetchUrl = fetchUrl + `&maxDate=${maxDate}`;
 
     return fetchUrl;
   };
 
   const fetchData = async () => {
     const fetchUrl = generateFetchUrl();
-    console.log("Generated fetchUrl:");
+    console.log(fetchUrl);
     try {
       const data = await fetch(fetchUrl);
       const jsonResponse = await data.json();
@@ -63,7 +68,7 @@ const useFetchData = ({
       setContent(content);
       setTotalPages(totalPages);
     } catch (error) {
-      console.error("Fetch failed:", error);
+      console.log("Fetch error: " + error);
     }
   };
 
