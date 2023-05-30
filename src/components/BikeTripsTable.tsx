@@ -20,38 +20,16 @@ export const BikeTripsTable = () => {
     apiUrl: "http://localhost:8080/api/biketrips",
   });
 
-  const bikeTripContent = content as unknown as BikeTrip[];
-
-  console.log("whole content: " + JSON.stringify(content));
-  const transformedData = bikeTripContent.map((item) => {
-    if (item && item.distanceInMeters) {
-    }
-    const newItem = {
-      ...item,
-      "distance (km)": (item.distanceInMeters / 1000).toFixed(2),
-      "duration (min)": Math.round(item.durationInSec / 60),
-    };
-
-    return newItem;
-  });
-
-  console.log("Transformed: " + JSON.stringify(transformedData));
-
   const title = "Bike Trips";
+
+  const filterArray = ["distanceInMeters", "durationInSec"];
 
   return (
     <DynamicTable
       title={title}
-      content={transformedData}
-      columnOverride={[
-        "departureStation",
-        "returnStation",
-        "departureTime",
-        "returnTime",
-        "distance (km)",
-        "duration (min)",
-      ]}
+      content={content}
       defaultSortColumn={"departureTime"}
+      columnFilter={filterArray}
       currentPage={currentPage}
       itemsPerPage={itemsPerPage}
       handlePageChange={handlePageChange}
