@@ -4,13 +4,24 @@ import topArrow from "../../icons/arrow-top-icon.svg";
 import sortArrow from "../../icons/sort-result-icon.svg";
 
 interface ColumnHeaderCellProps {
-  column: string;
+  columnProp: string;
   handleSort: (column: string) => void;
   sortColumn: string;
   sortDirection: string;
 }
 export function ColumnHeaderCell(props: ColumnHeaderCellProps) {
-  const { column, handleSort, sortColumn, sortDirection } = props;
+  const { columnProp, handleSort, sortColumn, sortDirection } = props;
+
+  let column: string;
+
+  const noSort = checkNoSort(columnProp);
+
+  if (noSort) {
+    column = parseNoSort(columnProp);
+  } else {
+    column = columnProp;
+  }
+
   const isSorting = column == sortColumn;
   const sortAscending = isSorting && sortDirection == "asc";
   const sortDescending = isSorting && sortDirection == "desc";
@@ -20,6 +31,14 @@ export function ColumnHeaderCell(props: ColumnHeaderCellProps) {
   };
 
   const formattedColumnName = CamelCaseToNormal(column);
+
+  if (noSort) {
+    return (
+      <th className="p-4 w-32 relative">
+        <div className="flex items-center">{formattedColumnName}</div>
+      </th>
+    );
+  }
 
   return (
     <th className="p-4 w-32 relative" onClick={handleClick}>
@@ -49,4 +68,18 @@ export function ColumnHeaderCell(props: ColumnHeaderCellProps) {
       </div>
     </th>
   );
+}
+
+function parseNoSort(str: string) {
+  const parts = str.split(" ");
+  for (let part of parts) {
+    if (part !== "noSort") {
+      return part;
+    }
+  }
+  return str;
+}
+
+function checkNoSort(str: string): boolean {
+  return str.includes("noSort") ? true : false;
 }

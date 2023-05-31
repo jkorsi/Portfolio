@@ -28,12 +28,12 @@ export function ContentMap<T>(props: ContentMapProps<T>) {
 }
 
 export function ColumnMap(props: {
-  formattedColumns: string[];
+  columns: string[];
   handleSort: (column: string) => void;
   sortColumn: string;
   sortDirection: string;
 }) {
-  const { formattedColumns, handleSort, sortColumn, sortDirection } = props;
+  const { columns, handleSort, sortColumn, sortDirection } = props;
 
   const handleClick = (column: string) => {
     handleSort(column);
@@ -42,10 +42,10 @@ export function ColumnMap(props: {
     <>
       <thead className="border-b-4">
         <tr>
-          {formattedColumns?.map((column: string) => (
+          {columns?.map((column: string) => (
             <ColumnHeaderCell
               key={column}
-              column={column}
+              columnProp={column}
               handleSort={handleClick}
               sortColumn={sortColumn}
               sortDirection={sortDirection}
@@ -58,21 +58,13 @@ export function ColumnMap(props: {
 }
 
 export function TableDataMap<T>(props: {
-  formattedColumns: string[];
   handleSort: (column: string) => void;
   sortColumn: string;
   sortDirection: string;
   content: T[];
   columns: string[];
 }) {
-  const {
-    formattedColumns,
-    handleSort,
-    sortColumn,
-    sortDirection,
-    content,
-    columns,
-  } = props;
+  const { handleSort, sortColumn, sortDirection, content, columns } = props;
 
   if (!columns || content.length === 0) {
     return (
@@ -84,7 +76,7 @@ export function TableDataMap<T>(props: {
   return (
     <table className="text-left table-auto whitespace-nowrap bg-neutral-100 bg-opacity-70">
       <ColumnMap
-        formattedColumns={formattedColumns}
+        columns={columns}
         handleSort={handleSort}
         sortColumn={sortColumn}
         sortDirection={sortDirection}

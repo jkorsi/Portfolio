@@ -22,12 +22,14 @@ export const StationsTable = () => {
 
   const title = "Bike Stations";
   const columnFilter = ["fid", "stationLocationX", "stationLocationY"];
+  //const extraCol = ["noSort show"];
 
   return (
     <DynamicTable
       title={title}
       content={content}
       columnFilter={columnFilter}
+      //extraColumns={extraCol}
       defaultSortColumn={"stationName"}
       currentPage={currentPage}
       itemsPerPage={itemsPerPage}

@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { TableDataMap } from "./TableDataMapping";
 import PaginationFooter from "./PaginationFooter";
 import useSortData from "../hooks/useSortData";
@@ -8,7 +8,7 @@ interface DynamicTableProps {
   title: string;
   content: any[];
   columnFilter?: string[];
-  columnOverride?: string[];
+  extraColumns?: string[];
   defaultSortColumn: string;
   currentPage: number;
   itemsPerPage: number;
@@ -24,7 +24,7 @@ export function DynamicTable(props: DynamicTableProps) {
     title,
     content,
     columnFilter,
-    columnOverride,
+    extraColumns,
     defaultSortColumn,
     currentPage,
     itemsPerPage,
@@ -51,18 +51,24 @@ export function DynamicTable(props: DynamicTableProps) {
     handleSortChange(sortColumn, sortDirection);
   }, [sortColumn, sortDirection, handleSortChange]);
 
-  let finalColumns: string[];
-  if (columns && columnFilter && !columnOverride) {
-    finalColumns = useMemo(
-      () => columns.filter((item) => !columnFilter.includes(item)) || [],
-      [columns, columnFilter]
-    );
-  } else if (columnOverride) {
-    finalColumns = columnOverride;
-  } else {
-    finalColumns = columns;
-  }
+  useEffect(() => {
+    if (content && content.length > 0) {
+      let initialColumns = Object.keys(content[0]);
 
+      if (columnFilter && columnFilter.length > 0) {
+        initialColumns = initialColumns.filter(
+          (item) => !columnFilter.includes(item)
+        );
+      }
+
+      if (extraColumns && extraColumns?.length > 0) {
+        initialColumns = initialColumns.concat(extraColumns);
+        console.log("With extra columns: " + extraColumns);
+      }
+
+      setColumns(initialColumns);
+    }
+  }, [sortColumn, sortDirection, content, columnFilter, extraColumns]);
   return (
     <div className="overflow-x-auto border-2 shadow-md sm:rounded-xl bg-slate-200 bg-opacity-70">
       <div>
@@ -70,12 +76,11 @@ export function DynamicTable(props: DynamicTableProps) {
       </div>
       <SearchInput handleSearchKeywordChange={handleSearchKeywordChange} />
       <TableDataMap
-        formattedColumns={finalColumns}
         handleSort={handleSort}
         sortColumn={sortColumn}
         sortDirection={sortDirection}
         content={content}
-        columns={finalColumns}
+        columns={columns}
       />
       <PaginationFooter
         currentPage={currentPage}
