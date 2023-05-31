@@ -3,6 +3,7 @@ export async function fileUploader(file: File, apiAddress: string) {
   formData.append("file", file);
 
   try {
+    console.log("Posting file! Api: " + apiAddress);
     const response = await fetch(apiAddress, {
       method: "POST",
       body: formData,

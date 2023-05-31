@@ -20,9 +20,11 @@ export const handleFileUpload: HandleFileUploadType = async (
     const data = text.split("\n").map((item) => item.split(","));
     const headerRow = data[0];
 
-    if (!validateCSV(data, headerRow)) {
-      console.log(headerRow);
-      alert("Invalid CSV file format! Got header row: " + headerRow);
+    const cleanerHeaderRow = headerRow.map((item) => item.replace(/\r/g, ""));
+
+    if (!validateCSV(data, cleanerHeaderRow)) {
+      console.log(cleanerHeaderRow);
+      alert("Invalid CSV file format! Got header row: " + cleanerHeaderRow);
       setImportStatus("Invalid CSV file format!");
       return;
     }
