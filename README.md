@@ -1,16 +1,15 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 
-[![MIT License][license-shield]]
+[MIT License][license-shield]
 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
 
 <h3 align="center">Portfolio</h3>
 
   <p align="center">
-    This is my personal portfolio project, currentyl includes the Bike Trip Assignment for Solita, that uses TypeScript, Vite, React and Tailwind CSS as a FE stack.
+    This is my personal portfolio project
     <br />
   </p>
 </div>
@@ -34,11 +33,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -48,9 +43,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+This is my personal portfolio project, which currently includes the Bike Trip Assignment for Solita, that uses TypeScript, Vite, React and Tailwind CSS as a FE stack.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -58,9 +51,9 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 https://vitejs.dev/
-* [![React][React.js]][React-url]
-* [![Vite][Vitejs.dev]][Vitejs-url]
-* [![Tailwind CSS][tailwindcss.com]][Tailwind-url]
+* [React][React.js][React-url]
+* [Vite][Vitejs.dev][Vitejs-url]
+* [Tailwind CSS][tailwindcss.com][Tailwind-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -69,9 +62,9 @@ https://vitejs.dev/
 <!-- GETTING STARTED -->
 ## Getting Started
 
+
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * Yarn
   ```sh
   yarn install npm@latest -g
@@ -80,6 +73,7 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   git clone https://github.com/jkorsi/Portfolio_Spring_Backend.git
   ```
+
 
 ### Installation
 
@@ -100,6 +94,8 @@ This is an example of how to list things you need to use the software and how to
    yarn test
    ```
 
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -114,8 +110,7 @@ Distributed under the MIT License.
 ## Acknowledgments
 
 Readme template:
-* [https://github.com/othneildrew/Best-README-Template/tree/master]()
-* []()
+* [https://github.com/othneildrew/Best-README-Template/tree/master]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
