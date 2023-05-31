@@ -14,6 +14,7 @@
 
 
 
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -38,6 +39,7 @@
 
 
 
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -47,7 +49,9 @@ This is my personal portfolio project, which currently includes the Bike Trip As
 
 
 
+
 ### Built With
+
 * https://vitejs.dev/ 
 * https://react.js
 * https://tailwindcss.com
@@ -61,16 +65,20 @@ This is my personal portfolio project, which currently includes the Bike Trip As
 ## Getting Started
 
 
+
 ### Prerequisites
+
 
 * Yarn
   ```sh
   yarn install npm@latest -g
   ```
-* Portfolio backend: +
+* Portfolio backend:
   ```sh
   git clone https://github.com/jkorsi/Portfolio_Spring_Backend.git
   ```
+
+
 
 
 ### Installation
@@ -96,8 +104,9 @@ This is my personal portfolio project, which currently includes the Bike Trip As
    ```
 
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 
 
 <!-- LICENSE -->
@@ -106,6 +115,10 @@ This is my personal portfolio project, which currently includes the Bike Trip As
 Distributed under the MIT License. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
