@@ -55,6 +55,7 @@ This is my personal portfolio project, which currently includes the Bike Trip As
 * https://vitejs.dev/ 
 * https://react.js
 * https://tailwindcss.com
+* https://www.typescriptlang.org/
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
