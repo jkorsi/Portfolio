@@ -48,9 +48,9 @@ This is my personal portfolio project, which currently includes the Bike Trip As
 
 
 ### Built With
-https://vitejs.dev/
-https://react.js
-https://tailwindcss.com
+* https://vitejs.dev/ 
+* https://react.js
+* https://tailwindcss.com
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
