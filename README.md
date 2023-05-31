@@ -87,7 +87,10 @@ This is my personal portfolio project, which currently includes the Bike Trip As
    ```sh
    yarn dev
    ```
-4. When editing, run tests:
+4. Open site (check the IDE terminal for the correct port in case of something else running on port 5173):
+  * localhost:5173
+  
+5. When editing, run tests:
    ```sh
    yarn test
    ```
