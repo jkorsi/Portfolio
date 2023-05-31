@@ -37,7 +37,10 @@ const CSVImporter = () => {
 
 export default CSVImporter;
 
-function isValidStationCSV(data: string[][], headerRow: string[]): boolean {
+export function isValidStationCSV(
+  data: string[][],
+  headerRow: string[]
+): boolean {
   //FID,ID,Nimi,Namn,Name,Osoite,Adress,Kaupunki,Stad,Operaattor,Kapasiteet,x,y
 
   return (
@@ -59,7 +62,10 @@ function isValidStationCSV(data: string[][], headerRow: string[]): boolean {
   );
 }
 
-function isValidBikeTripCSV(data: string[][], headerRow: string[]): boolean {
+export function isValidBikeTripCSV(
+  data: string[][],
+  headerRow: string[]
+): boolean {
   //FID,ID,Nimi,Namn,Name,Osoite,Adress,Kaupunki,Stad,Operaattor,Kapasiteet,x,y
 
   return (
