@@ -1,5 +1,35 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
+## Functional Requirements for the Solita Assignment:
+## Data import
+-Recommended
+- [x] Import data from the CSV files to a **database**
+- [x] Validate data before importing
+- [x] Don't import journeys that lasted for less than ten seconds
+- [x] Don't import journeys that covered distances shorter than 10 meters
+
+## Journey list view
+
+Recommended
+- [x] List journeys
+- [x] For each journey show departure and return stations, covered distance in kilometers and duration in minutes
+
+Additional
+- [x] Pagination
+- [x] Ordering per column
+- [x] Searching
+- [ ] Filtering
+
+##Station list
+
+Recommended
+- [x] List all the stations
+
+Additional
+- [x] Pagination
+- [x] Searching
+
+Wasn't able to reach to the Single station view.
 
 <br />
 <div align="center">
@@ -11,7 +41,6 @@
     <br />
   </p>
 </div>
-
 
 
 
@@ -36,7 +65,6 @@
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
 
 
 
